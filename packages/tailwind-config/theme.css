@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-guts-green-50: #f0fdf4;
+  --color-guts-green-100: #dcfce7;
+  --color-guts-green-200: #bbf7d0;
+  --color-guts-green-300: #86efac;
+  --color-guts-green-400: #4ade80;
+  --color-guts-green-500: #22c55e;
+  --color-guts-green-600: #16a34a;
+  --color-guts-green-700: #15803d;
+  --color-guts-green-800: #166534;
+  --color-guts-green-900: #14532d;
+
+  --color-guts-blue-50: #eff6ff;
+  --color-guts-blue-100: #dbeafe;
+  --color-guts-blue-200: #bfdbfe;
+  --color-guts-blue-300: #93c5fd;
+  --color-guts-blue-400: #60a5fa;
+  --color-guts-blue-500: #3b82f6;
+  --color-guts-blue-600: #2563eb;
+  --color-guts-blue-700: #1d4ed8;
+  --color-guts-blue-800: #1e40af;
+  --color-guts-blue-900: #1e3a8a;
+
+  --color-primary: #c094f6;
+  --color-primary-dark: #522281;
+  --color-primary-50: #faf6fe;
+  --color-primary-100: #f2e9fe;
+  --color-primary-200: #e7d7fd;
+  --color-primary-300: #d5b8fa;
+  --color-primary-400: #c094f6;
+  --color-primary-500: #a15eee;
+  --color-primary-600: #8a3de0;
+  --color-primary-700: #752cc4;
+  --color-primary-800: #6429a0;
+  --color-primary-900: #522281;
+  --color-primary-950: #360c5f;
+
+  /* Design system colors */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}

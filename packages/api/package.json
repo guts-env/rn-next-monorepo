@@ -1,0 +1,11 @@
+{
+  "name": "@repo/api",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@supabase/supabase-js": "^2.55.0",
+    "@tanstack/react-query": "^5.85.3",
+    "axios": "^1.11.0"
+  }
+}

@@ -1,135 +1,228 @@
-# Turborepo starter
+# React Native + Next.js Monorepo
 
-This Turborepo starter is maintained by the Turborepo core team.
+A full-stack monorepo combining React Native mobile development with Next.js web applications, powered by Turborepo for optimal build performance and code sharing.
 
-## Using this example
+## 🏗️ Project Structure
 
-Run the following command:
+This monorepo contains:
 
-```sh
-npx create-turbo@latest
+### Apps
+
+- **`mobile`**: React Native app with Expo Router for cross-platform mobile development
+- **`web`**: Next.js web application with modern React patterns
+
+### Shared Packages
+
+- **`@repo/api`**: Shared API layer with Axios, TanStack Query, and Supabase
+- **`@repo/design-system`**: Design system with Storybook, Vitest, and Playwright testing
+- **`@repo/eslint-config`**: ESLint configurations for Next.js, Expo, and React
+- **`@repo/forms`**: Form components with React Hook Form and Zod validation
+- **`@repo/stores`**: State management utilities using Zustand
+- **`@repo/tailwind-config`**: Shared Tailwind CSS v4 configuration
+- **`@repo/typescript-config`**: TypeScript configurations for different environments
+- **`@repo/ui`**: Component library with Radix UI, Lucide icons, and CVA styling
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+
+- pnpm (package manager)
+
+### Installation
+
+```bash
+git clone <repository-url>
+cd rn-next-monorepo
+pnpm install
 ```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-### Utilities
+## 🛠️ Development Commands
 
-This Turborepo has some additional tools already setup for you:
+### Start Development Servers
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+```bash
+# Start all apps
+pnpm dev
 
-### Build
+# Start web app only
+pnpm web:dev
 
-To build all apps and packages, run the following command:
+# Start mobile app only
+pnpm expo:dev
 
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+# Start Storybook design system
+pnpm storybook
 ```
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+### Mobile App Commands
 
+```bash
+# Start on Android device/simulator
+pnpm expo:android
+
+# Start on iOS device/simulator
+pnpm expo:ios
+
+# Start in web browser
+pnpm expo:web
 ```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+### Build Commands
+
+```bash
+# Build all apps and packages
+pnpm build
+
+# Build web app
+pnpm web:build
+
+# Build mobile for production
+pnpm expo:build:all
+pnpm expo:build:android
+pnpm expo:build:ios
+
+# Build Storybook
+pnpm storybook:build
 ```
 
-### Develop
+### Quality Commands
 
-To develop all apps and packages, run the following command:
+```bash
+# Run linting across all packages
+pnpm lint
 
+# Run tests across all packages
+pnpm test
 ```
-cd my-turborepo
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
+### Advanced Turbo Commands
+
+You can also run Turbo commands directly to run tasks included in the `turbo.json` file:
+
+**With Global Turbo** (install with `npm install turbo --global`):
+```bash
+# Development
 turbo dev
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
-```
-
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
 turbo dev --filter=web
+turbo dev --filter=mobile
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
+# Building
+turbo build
+turbo build --filter=web
+turbo build --filter=mobile
+
+# Testing & Linting
+turbo test
+turbo lint
+turbo lint --filter=@repo/ui
+```
+
+**Without Global Turbo** (using package manager):
+```bash
+# Development
+pnpm exec turbo dev
+npx turbo dev
+
 pnpm exec turbo dev --filter=web
+npx turbo dev --filter=web
+
+pnpm exec turbo dev --filter=mobile
+npx turbo dev --filter=mobile
+
+# Building
+pnpm exec turbo build
+npx turbo build
+
+pnpm exec turbo build --filter=web
+npx turbo build --filter=web
+
+pnpm exec turbo build --filter=mobile
+npx turbo build --filter=mobile
+
+# Testing & Linting
+pnpm exec turbo test
+npx turbo test
+
+pnpm exec turbo test --filter=@repo/ui
+npx turbo test --filter=@repo/ui
+
+
+pnpm exec turbo lint
+npx turbo lint
+
+pnpm exec turbo lint --filter=@repo/ui
+npx turbo lint --filter=@repo/ui
 ```
 
-### Remote Caching
+**Useful Turbo Filters:**
+- `--filter=web` - Target web app only
+- `--filter=mobile` - Target mobile app only
+- `--filter=@repo/ui` - Target UI package only
+- `--filter=@repo/*` - Target all shared packages
+- `--filter=...web` - Include web and its dependencies
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+## 🏗️ Development Utilities
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+This monorepo includes:
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+- **TypeScript** - Static type checking across all packages
+- **ESLint** - Code linting with shared configurations
+- **Prettier** - Code formatting
+- **Husky** - Git hooks for quality gates
+- **Turborepo** - Build system optimization and caching
 
-```
-cd my-turborepo
+## 📚 Tech Stack
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
+### Frontend
+- **React 19** - Latest React with concurrent features
+- **Next.js** - Full-stack React framework for web
+- **React Native** - Cross-platform mobile development
+- **Expo Router** - File-based routing for React Native
+- **Tailwind CSS v4** - Utility-first CSS framework
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
-```
+### State Management & Data Fetching
+- **Zustand** - Lightweight state management
+- **TanStack Query** - Server state management and caching
+- **React Hook Form** - Performant forms with minimal re-renders
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+### Backend & Database
+- **Supabase** - Backend-as-a-Service (Auth, Database, Storage)
+- **Axios** - HTTP client for API requests
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### UI & Design
+- **Radix UI** - Unstyled, accessible UI primitives
+- **Lucide React** - Beautiful icon library
+- **Storybook** - Component development environment
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
+### Developer Experience
+- **TypeScript** - Static type checking
+- **Turborepo** - Monorepo build system
+- **Vitest** - Fast unit testing framework
+- **Playwright** - End-to-end testing
+- **ESLint & Prettier** - Code quality and formatting
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
-```
+### Validation & Utilities
+- **Zod** - TypeScript-first schema validation
+- **Class Variance Authority** - Component variant styling
+- **clsx** - Conditional CSS classes
 
-## Useful Links
+## 🚀 Getting Started
 
-Learn more about the power of Turborepo:
+1. **Clone the repository**
+2. **Install dependencies**: `pnpm install`
+3. **Start development**: With global turbo: `turbo dev` or without global turbo: `npx turbo dev` or `pnpm exec turbo dev`
+4. **Open apps**:
+   - Web: http://localhost:3000
+   - Mobile: Use Expo Go app or simulator
+   - Storybook: http://localhost:6006
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+## 🔗 Useful Resources
+
+- [Turborepo Documentation](https://turborepo.com/docs)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Expo Documentation](https://docs.expo.dev)
+- [React Native Documentation](https://reactnative.dev/docs)
+- [Supabase Documentation](https://supabase.com/docs)

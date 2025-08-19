@@ -1,21 +1,42 @@
 {
   "$schema": "https://turborepo.com/schema.json",
+  "globalDependencies": ["**/.env.*local"],
   "ui": "tui",
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
-    },
-    "lint": {
-      "dependsOn": ["^lint"]
-    },
-    "check-types": {
-      "dependsOn": ["^check-types"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "expo/**"]
     },
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
+    },
+    "start": {
+      "cache": false,
+      "persistent": true
+    },
+    "ios": {
+      "dependsOn": ["^ios"]
+    },
+    "android": {
+      "dependsOn": ["^android"]
+    },
+    "web": {
+      "dependsOn": ["^web"]
+    },
+    "storybook": {
+      "dependsOn": ["^storybook"]
+    },
+    "build-storybook": {
+      "dependsOn": ["^build-storybook"]
     }
   }
 }
